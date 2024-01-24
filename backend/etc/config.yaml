@@ -29,14 +29,13 @@ MySQL: # MySQL数据库
   Password: asdasd
   Host: 127.0.0.1
   Port: 3306
-  Config: "charset=utf8mb4&parseTime=True&loc=Local"
   DBName: nunu
   Charset: utf8mb4
   ParstTime: True
   Loc: Local
   MaxIdleConns: 10
   MaxOpenConns: 30
-  LogLevel: debug
+#  LogLevel: debug
   enable: true
 
 

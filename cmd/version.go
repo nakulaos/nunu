@@ -1,15 +1,11 @@
 /**
  ******************************************************************************
- * @file           : config.go
+ * @file           : version.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
- * @date           : 2024/1/23
+ * @date           : 2024/1/24
  ******************************************************************************
  */
 
-package config
-
-type Config struct {
-	Mysql MysqlConf
-}
+package cmd

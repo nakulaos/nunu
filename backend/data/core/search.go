@@ -1,6 +1,6 @@
 /**
  ******************************************************************************
- * @file           : config.go
+ * @file           : search.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
@@ -8,8 +8,4 @@
  ******************************************************************************
  */
 
-package config
-
-type Config struct {
-	Mysql MysqlConf
-}
+package core

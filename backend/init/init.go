@@ -1,15 +1,15 @@
 /**
  ******************************************************************************
- * @file           : config.go
+ * @file           : init.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
- * @date           : 2024/1/23
+ * @date           : 2024/1/24
  ******************************************************************************
  */
 
-package config
+package init
 
-type Config struct {
-	Mysql MysqlConf
+func Init() {
+
 }

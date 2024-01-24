@@ -1,15 +1,17 @@
 /**
  ******************************************************************************
- * @file           : config.go
+ * @file           : user.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
- * @date           : 2024/1/23
+ * @date           : 2024/1/24
  ******************************************************************************
  */
 
-package config
+package core
 
-type Config struct {
-	Mysql MysqlConf
+import "nunu/backend/data/model"
+
+type UserManageStore interface {
+	GetUserByID(id uint64) (*model.User, error)
 }

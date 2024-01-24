@@ -1,15 +1,15 @@
 /**
  ******************************************************************************
- * @file           : config.go
+ * @file           : gorm.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
- * @date           : 2024/1/23
+ * @date           : 2024/1/24
  ******************************************************************************
  */
 
-package config
+package gorm
 
-type Config struct {
-	Mysql MysqlConf
+func InitGorm() {
+
 }

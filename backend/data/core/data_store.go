@@ -1,6 +1,6 @@
 /**
  ******************************************************************************
- * @file           : config.go
+ * @file           : data_store.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
@@ -8,8 +8,8 @@
  ******************************************************************************
  */
 
-package config
+package core
 
-type Config struct {
-	Mysql MysqlConf
+// DataStore 所有数据服务接口
+type DataStore interface {
 }
