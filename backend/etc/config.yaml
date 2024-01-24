@@ -1,0 +1,139 @@
+MetricsServer: # Prometheus Metrics服务
+  RunMode: debug
+  HttpIp: 0.0.0.0
+  HttpPort: 6080
+  ReadTimeout: 60
+  WriteTimeout: 60
+
+Server:
+  Ip: 0.0.0.0
+  Port: 8085
+
+WebServer: # Web服务
+  RunMode: debug
+  HttpIp: 0.0.0.0
+  HttpPort: 8008
+  ReadTimeout: 60
+  WriteTimeout: 60
+
+AdminServer: # Admin后台运维服务
+  Ip: 0.0.0.0
+  Port: 8088
+
+DocsServer: # 开发文档服务
+  Ip: 0.0.0.0
+  Port: 8011
+
+MySQL: # MySQL数据库
+  UserName: root
+  Password: asdasd
+  Host: 127.0.0.1
+  Port: 3306
+  Config: "charset=utf8mb4&parseTime=True&loc=Local"
+  DBName: nunu
+  Charset: utf8mb4
+  ParstTime: True
+  Loc: Local
+  MaxIdleConns: 10
+  MaxOpenConns: 30
+  LogLevel: debug
+  enable: true
+
+
+Logger: # 日志通用配置
+  Level: debug # 日志级别 panic|fatal|error|warn|info|debug|trace
+
+LoggerFile: # 使用File写日志
+  SavePath: custom/data/logs
+  FileName: app
+  FileExt: .log
+
+LoggerZinc: # 使用Zinc写日志
+  Host: localhost:4080
+  Index: nakulaos-log
+  User: admin
+  Password: asdasd
+  Secure: False
+
+App: # APP基础设置项
+  RunMode: debug
+  AttachmentIncomeRate: 0.8
+  MaxCommentCount: 1000
+  MaxWhisperDaily: 1000       # 一天可以发送的最大私信总数，临时措施，后续将去掉这个限制
+  MaxCaptchaTimes: 2          # 最大获取captcha的次数
+  DefaultContextTimeout: 60
+  DefaultPageSize: 10
+  MaxPageSize: 100
+
+Sentry: # Sentry配置
+  #  Dsn: "https://3c731b902395ba517af439b8cabac022@o4506349350420480.ingest.sentry.io/4506366358126592"
+  Dsn:  "http://3c5e390df1d31639e4090cfd7159f7b4@localhost:9000/2"
+  Debug: True
+  AttachStacktrace: True
+  TracesSampleRate: 1.0
+  AttachLogrus: True  # logrus是否附加到Sentry
+  AttachGin: True
+
+EventsManager: # 事件管理器的配置参数
+  MinWorker: 64               # 最小后台工作者, 设置范围[5, ++], 默认64
+  MaxEventBuf: 128            # 最大log缓存条数, 设置范围[10, ++], 默认128
+  MaxTempEventBuf: 256        # 最大log缓存条数, 设置范围[10, ++], 默认256
+  MaxTickCount: 60            # 最大的循环周期, 设置范围[60, ++], 默认60
+  TickWaitTime: 1             # 一个周期的等待时间，单位：秒 默认1s
+
+MetricManager: # 指标监控管理器的配置参数
+  MinWorker: 32               # 最小后台工作者, 设置范围[5, ++], 默认32
+  MaxEventBuf: 128            # 最大log缓存条数, 设置范围[10, ++], 默认128
+  MaxTempEventBuf: 256        # 最大log缓存条数, 设置范围[10, ++], 默认256
+  MaxTickCount: 60            # 最大的循环周期, 设置范围[60, ++], 默认60
+  TickWaitTime: 1             # 一个周期的等待时间，单位：秒 默认1s
+JobManager: # Cron Job理器的配置参数
+  MaxOnlineInterval: "@every 5m"       # 更新最大在线人数，默认每5分钟更新一次
+  UpdateMetricsInterval: "@every 5m"   # 更新Prometheus指标，默认每5分钟更新一次
+
+Database: # Database通用配置
+  LogLevel: error   # 日志级别 silent|error|warn|info
+  TablePrefix: p_   # 表名前缀
+
+Cache:
+  KeyPoolSize: 256            # 键的池大小， 设置范围[128, ++], 默认256
+  CientSideCacheExpire: 60    # 客户端缓存过期时间 默认60s
+  UnreadMsgExpire: 60         # 未读消息过期时间，单位秒， 默认60s
+  UserTweetsExpire: 60        # 获取用户推文列表过期时间，单位秒， 默认60s
+  IndexTweetsExpire: 120      # 获取广场推文列表过期时间，单位秒， 默认120s
+  TweetCommentsExpire: 120    # 获取推文评论过期时间，单位秒， 默认120s
+  IndexTrendsExpire: 120      # 获取广场动态信息过期时间，单位秒， 默认120s
+  OnlineUserExpire: 300       # 标记在线用户 过期时间，单位秒， 默认300s
+  UserInfoExpire: 120         # 获取用户信息过期时间，单位秒， 默认120s
+  UserProfileExpire: 120      # 获取用户概要过期时间，单位秒， 默认120s
+  UserRelationExpire: 120     # 用户关系信息过期时间，单位秒， 默认120s
+  MessagesExpire: 60          # 消息列表过期时间，单位秒， 默认60s
+
+Redis:
+  InitAddress: 127.0.0.1:6379
+  Username:
+  Password: asdasd
+  SelectDB:
+  ConnWriteTimeout: 60     # 连接写超时时间 多少秒 默认 60秒
+
+JWT: # 鉴权加密
+  Secret: asdasdasd
+  Issuer: nunu
+  Expire: 86400
+
+SmsJuhe:
+  Gateway: https://v.juhe.cn/sms/send
+  Key: jalfkjal
+  TplID: hdfkahf
+  TplVal: "#code#=%s&#m#=%d"
+
+
+Mail:
+  HttpHost: "smtp.qq.com"
+  HttpPort: 465
+  User: hallnakulaos@qq.com #发件人邮箱
+  Password: "orrzcpxtzajedchg"
+  DefaultFromEmail: "nakulaos" #发件人名字
+  UseSSL: false
+  UserTLS: false
+
