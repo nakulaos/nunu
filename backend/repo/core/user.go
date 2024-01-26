@@ -10,7 +10,7 @@
 
 package core
 
-import "nunu/backend/data/model"
+import "nunu/backend/repo/model"
 
 type UserManageStore interface {
 	GetUserByID(id uint64) (*model.User, error)

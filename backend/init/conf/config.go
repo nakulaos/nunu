@@ -8,7 +8,7 @@
  ******************************************************************************
  */
 
-package config
+package conf
 
 import (
 	"fmt"
@@ -37,7 +37,10 @@ func initConf() {
 	}
 
 	objs := map[string]any{
-		"MySQL": &_config.Mysql,
+		"MySQL":    &_config.Mysql,
+		"Database": &_config.Database,
+		"Postgres": &_config.PostgresConf,
+		"Sqlite3":  &_config.Sqlite3Conf,
 	}
 
 	for k, v := range objs {
@@ -48,7 +51,7 @@ func initConf() {
 	}
 }
 
-func NewConfig() *config.Config {
+func GetConfig() *config.Config {
 	_once.Do(func() {
 		initConf()
 	})

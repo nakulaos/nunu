@@ -36,7 +36,7 @@ MySQL: # MySQL数据库
   MaxIdleConns: 10
   MaxOpenConns: 30
 #  LogLevel: debug
-  enable: true
+  Enable: false
 
 
 Logger: # 日志通用配置
@@ -136,3 +136,21 @@ Mail:
   UseSSL: false
   UserTLS: false
 
+
+
+Sqlite3: # Sqlite3数据库
+  Path: C:\Users\DENGFENGCHENG\nunu.db
+  Enable: true
+
+
+
+Postgres: # PostgreSQL数据库
+  User: postgres
+  Password: asdasd
+  DBName: nunu
+  Schema: public
+  Host: localhost
+  Port: 5432
+  SSLMode: disable
+  ApplicationName: nunu
+  Enable: false

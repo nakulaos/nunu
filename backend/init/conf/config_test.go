@@ -8,7 +8,7 @@
  ******************************************************************************
  */
 
-package config
+package conf
 
 import (
 	"fmt"
@@ -24,7 +24,7 @@ func Test_initConf(t *testing.T) {
 		// TODO: Add test cases.
 		{},
 	}
-	fmt.Println(NewConfig())
+	fmt.Println(GetConfig())
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			initConf()
