@@ -64,7 +64,6 @@ func initGormDB() {
 		} else {
 			panic(fmt.Sprintf("failure to using mysql :%s", err))
 		}
-
 	} else if sysConfig.PostgresConf.Enable {
 		logrus.Debugln("use postgres mysql as db")
 		var err error
@@ -79,7 +78,6 @@ func initGormDB() {
 		if err != nil {
 			panic(fmt.Sprintf("failure to use sqlite3 : %s ", err))
 		}
-
 	} else {
 		logrus.Debugln("use default of mysql as db")
 		var err error

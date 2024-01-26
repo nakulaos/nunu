@@ -43,16 +43,29 @@ Logger: # 日志通用配置
   Level: debug # 日志级别 panic|fatal|error|warn|info|debug|trace
 
 LoggerFile: # 使用File写日志
-  SavePath: custom/data/logs
+  SavePath: runtime/data/logs
   FileName: app
   FileExt: .log
+  Enable: true
 
 LoggerZinc: # 使用Zinc写日志
   Host: localhost:4080
-  Index: nakulaos-log
+  Index: nunu-log
   User: admin
   Password: asdasd
   Secure: False
+  Enable: true
+
+
+LoggerMeili: # 使用Meili写日志
+  Host: localhost:7700
+  Index: nunu-log
+  ApiKey: nunu-meilisearch
+  Secure: False
+  MinWorker: 5               # 最小后台工作者, 设置范围[5, 100], 默认5
+  MaxLogBuffer: 100          # 最大log缓存条数, 设置范围[10, 10000], 默认100
+  Enable: true
+
 
 App: # APP基础设置项
   RunMode: debug

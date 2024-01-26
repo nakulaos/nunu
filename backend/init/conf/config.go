@@ -37,10 +37,14 @@ func initConf() {
 	}
 
 	objs := map[string]any{
-		"MySQL":    &_config.Mysql,
-		"Database": &_config.Database,
-		"Postgres": &_config.PostgresConf,
-		"Sqlite3":  &_config.Sqlite3Conf,
+		"MySQL":       &_config.Mysql,
+		"Database":    &_config.Database,
+		"Postgres":    &_config.PostgresConf,
+		"Sqlite3":     &_config.Sqlite3Conf,
+		"Logger":      &_config.LoggerConf,
+		"LoggerFile":  &_config.LoggerFileConf,
+		"LoggerZinc":  &_config.LoggerZincConf,
+		"LoggerMeili": &_config.LoggerMeiliConf,
 	}
 
 	for k, v := range objs {
