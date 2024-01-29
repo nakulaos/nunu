@@ -7,10 +7,14 @@
 + gorm
 + mysql
 + redis
-+ zinc
-+ sentry
-+ prometheus
-+ 
++ 监控
+  + sentry
+  + prometheus
++ 日志
+  + filebeat+logstash+kafka+elasticSearch+go-stash+kibana(配置失败)
+  + zincSearch
+  + meiliSearch
+  + file
 
 
 **待使用**
@@ -27,3 +31,5 @@
 + electron
 + ionic
 + h5
+
+## 功能
