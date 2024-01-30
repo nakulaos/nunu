@@ -28,9 +28,9 @@ var (
 func initSqlxDB() {
 	sysConfig := conf.GetConfig()
 
-	if sysConfig.Mysql.Enable {
+	if sysConfig.MysqlConf.Enable {
 		logrus.Debugln("use MySQL as relation database")
-		_sqlxDB = sqlx.MustConnect("mysql", sysConfig.Mysql.Dsn())
+		_sqlxDB = sqlx.MustConnect("mysql", sysConfig.MysqlConf.Dsn())
 	} else if sysConfig.PostgresConf.Enable {
 		logrus.Debugln("use PostgresSQL as relation database")
 		_sqlxDB = sqlx.MustConnect("postgres", sysConfig.PostgresConf.Dsn())
@@ -39,7 +39,7 @@ func initSqlxDB() {
 		_sqlxDB = sqlx.MustConnect("sqlite3", sysConfig.Sqlite3Conf.Dsn("sqlite3"))
 	} else {
 		logrus.Debugln("use default MySQL as relation database")
-		_sqlxDB = sqlx.MustConnect("MySQL", sysConfig.Mysql.Dsn())
+		_sqlxDB = sqlx.MustConnect("MySQL", sysConfig.MysqlConf.Dsn())
 	}
 
 }

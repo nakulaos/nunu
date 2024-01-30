@@ -11,7 +11,7 @@
 package config
 
 type Config struct {
-	Mysql           MysqlConf
+	MysqlConf       MysqlConf
 	Database        DatabaseConf
 	PostgresConf    PostgresConf
 	Sqlite3Conf     Sqlite3Conf
@@ -19,4 +19,5 @@ type Config struct {
 	LoggerFileConf  LoggerFileConf
 	LoggerZincConf  LoggerZincConf
 	LoggerMeiliConf LoggerMeiliConf
+	SentryConf      SentryConf
 }

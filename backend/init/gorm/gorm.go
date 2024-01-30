@@ -52,13 +52,13 @@ func initGormDB() {
 	plugin := dbresolver.Register(dbresolver.Config{}).
 		SetConnMaxIdleTime(time.Hour).
 		SetConnMaxLifetime(24 * time.Hour).
-		SetMaxIdleConns(sysConfig.Mysql.MaxIdleConns).
-		SetMaxOpenConns(sysConfig.Mysql.MaxOpenConns)
+		SetMaxIdleConns(sysConfig.MysqlConf.MaxIdleConns).
+		SetMaxOpenConns(sysConfig.MysqlConf.MaxOpenConns)
 
-	if sysConfig.Mysql.Enable {
+	if sysConfig.MysqlConf.Enable {
 		logrus.Debugln("use mysql as db")
 		var err error
-		_gormdb, err = gorm.Open(mysql.Open(sysConfig.Mysql.Dsn()), config)
+		_gormdb, err = gorm.Open(mysql.Open(sysConfig.MysqlConf.Dsn()), config)
 		if err == nil {
 			_gormdb.Use(plugin)
 		} else {
@@ -81,7 +81,7 @@ func initGormDB() {
 	} else {
 		logrus.Debugln("use default of mysql as db")
 		var err error
-		_gormdb, err = gorm.Open(mysql.Open(sysConfig.Mysql.Dsn()), config)
+		_gormdb, err = gorm.Open(mysql.Open(sysConfig.MysqlConf.Dsn()), config)
 		if err == nil {
 			_gormdb.Use(plugin)
 		} else {

@@ -85,6 +85,7 @@ Sentry: # Sentry配置
   TracesSampleRate: 1.0
   AttachLogrus: True  # logrus是否附加到Sentry
   AttachGin: True
+  Enable: True
 
 EventsManager: # 事件管理器的配置参数
   MinWorker: 64               # 最小后台工作者, 设置范围[5, ++], 默认64

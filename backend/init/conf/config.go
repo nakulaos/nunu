@@ -30,6 +30,7 @@ func initConf() {
 	_viper.SetConfigName("config")
 	_viper.SetConfigType("yaml")
 	_viper.AddConfigPath("../../etc")
+	_viper.AddConfigPath("./backend/etc")
 
 	err := _viper.ReadInConfig() // 查找并读取配置文件
 	if err != nil {              // 处理读取配置文件的错误
@@ -37,7 +38,7 @@ func initConf() {
 	}
 
 	objs := map[string]any{
-		"MySQL":       &_config.Mysql,
+		"MySQL":       &_config.MysqlConf,
 		"Database":    &_config.Database,
 		"Postgres":    &_config.PostgresConf,
 		"Sqlite3":     &_config.Sqlite3Conf,
@@ -45,6 +46,7 @@ func initConf() {
 		"LoggerFile":  &_config.LoggerFileConf,
 		"LoggerZinc":  &_config.LoggerZincConf,
 		"LoggerMeili": &_config.LoggerMeiliConf,
+		"Sentry":      &_config.SentryConf,
 	}
 
 	for k, v := range objs {
