@@ -15,6 +15,7 @@ import (
 	viper2 "github.com/spf13/viper"
 	"nunu/backend/config"
 	"sync"
+	"time"
 )
 
 var (
@@ -47,6 +48,7 @@ func initConf() {
 		"LoggerZinc":  &_config.LoggerZincConf,
 		"LoggerMeili": &_config.LoggerMeiliConf,
 		"Sentry":      &_config.SentryConf,
+		"Redis":       &_config.RedisConf,
 	}
 
 	for k, v := range objs {
@@ -55,6 +57,8 @@ func initConf() {
 			panic(fmt.Errorf("Fatal error viper unmarshalkey:%s\n", err))
 		}
 	}
+
+	_config.RedisConf.ConnWriteTimeout *= time.Second
 }
 
 func GetConfig() *config.Config {

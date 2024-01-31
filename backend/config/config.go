@@ -20,4 +20,5 @@ type Config struct {
 	LoggerZincConf  LoggerZincConf
 	LoggerMeiliConf LoggerMeiliConf
 	SentryConf      SentryConf
+	RedisConf       RedisConf
 }

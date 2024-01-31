@@ -9,3 +9,13 @@
  */
 
 package config
+
+import "time"
+
+type RedisConf struct {
+	InitAddress      []string
+	Username         string
+	Password         string
+	SelectDB         int
+	ConnWriteTimeout time.Duration
+}
