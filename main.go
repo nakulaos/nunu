@@ -8,4 +8,10 @@
  ******************************************************************************
  */
 
-package nunu
+package main
+
+import "nunu/cmd"
+
+func main() {
+	cmd.Execute()
+}

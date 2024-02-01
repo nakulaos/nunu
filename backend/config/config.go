@@ -12,7 +12,7 @@ package config
 
 type Config struct {
 	MysqlConf       MysqlConf
-	Database        DatabaseConf
+	DatabaseConf    DatabaseConf
 	PostgresConf    PostgresConf
 	Sqlite3Conf     Sqlite3Conf
 	LoggerConf      LoggerConf
@@ -21,4 +21,5 @@ type Config struct {
 	LoggerMeiliConf LoggerMeiliConf
 	SentryConf      SentryConf
 	RedisConf       RedisConf
+	MailConf        MailConf
 }

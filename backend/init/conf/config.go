@@ -40,7 +40,7 @@ func initConf() {
 
 	objs := map[string]any{
 		"MySQL":       &_config.MysqlConf,
-		"Database":    &_config.Database,
+		"Database":    &_config.DatabaseConf,
 		"Postgres":    &_config.PostgresConf,
 		"Sqlite3":     &_config.Sqlite3Conf,
 		"Logger":      &_config.LoggerConf,
@@ -49,6 +49,7 @@ func initConf() {
 		"LoggerMeili": &_config.LoggerMeiliConf,
 		"Sentry":      &_config.SentryConf,
 		"Redis":       &_config.RedisConf,
+		"MailConf":    &_config.MailConf,
 	}
 
 	for k, v := range objs {

@@ -36,7 +36,7 @@ MySQL: # MySQL数据库
   MaxIdleConns: 10
   MaxOpenConns: 30
 #  LogLevel: debug
-  Enable: true
+  Enable: false
 
 
 Logger: # 日志通用配置
@@ -107,6 +107,7 @@ JobManager: # Cron Job理器的配置参数
 Database: # Database通用配置
   LogLevel: error   # 日志级别 silent|error|warn|info
   TablePrefix: p_   # 表名前缀
+  Orm: Gorm
 
 Cache:
   KeyPoolSize: 256            # 键的池大小， 设置范围[128, ++], 默认256
@@ -154,7 +155,7 @@ Mail:
 
 Sqlite3: # Sqlite3数据库
   Path: C:\Users\DENGFENGCHENG\nunu.db
-  Enable: false
+  Enable: true
 
 
 
@@ -167,4 +168,7 @@ Postgres: # PostgreSQL数据库
   Port: 5432
   SSLMode: disable
   ApplicationName: nunu
-  Enable: true
+  Enable: false
+
+
+

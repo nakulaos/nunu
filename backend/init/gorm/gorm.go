@@ -1,6 +1,6 @@
 /**
  ******************************************************************************
- * @file           : gorm.go
+ * @file           : jinzhu.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
@@ -36,7 +36,7 @@ func initGormDB() {
 		logrus.StandardLogger(),
 		logger.Config{
 			SlowThreshold:             time.Second,
-			LogLevel:                  sysConfig.Database.GetLogLevel(),
+			LogLevel:                  sysConfig.DatabaseConf.GetLogLevel(),
 			IgnoreRecordNotFoundError: true,
 			Colorful:                  false,
 		})
@@ -44,7 +44,7 @@ func initGormDB() {
 	config := &gorm.Config{
 		Logger: newLogger,
 		NamingStrategy: schema.NamingStrategy{
-			TablePrefix:   sysConfig.Database.TablePrefix,
+			TablePrefix:   sysConfig.DatabaseConf.TablePrefix,
 			SingularTable: true,
 		},
 	}

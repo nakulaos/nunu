@@ -9,3 +9,13 @@
  */
 
 package config
+
+type MailConf struct {
+	HttpHost         string
+	HttpPort         int
+	User             string
+	Password         string
+	DefaultFromEmail string
+	UseSSL           bool
+	UserTLS          bool
+}

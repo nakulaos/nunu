@@ -9,3 +9,11 @@
  */
 
 package cmd
+
+import (
+	"github.com/spf13/cobra"
+)
+
+func commandRun(_cmd *cobra.Command, _args []string) {
+
+}

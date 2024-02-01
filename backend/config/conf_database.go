@@ -18,6 +18,7 @@ import (
 type DatabaseConf struct {
 	TablePrefix string
 	LogLevel    string
+	Orm         string
 }
 
 func (s *DatabaseConf) GetLogLevel() logger.LogLevel {

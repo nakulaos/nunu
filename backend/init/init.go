@@ -9,7 +9,3 @@
  */
 
 package init
-
-func Init() {
-
-}

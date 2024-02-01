@@ -18,11 +18,11 @@ import (
 
 // Model 公共模块
 type Model struct {
-	ID         int64                 `gorm:"primary_key" json:"id"`
+	ID         int64                 `jinzhu:"primary_key" json:"id"`
 	CreatedOn  int64                 `json:"created_on"`
 	ModifiedOn int64                 `json:"modified_on"`
 	DeletedOn  int64                 `json:"deleted_on"`
-	IsDel      soft_delete.DeletedAt `gorm:"softDelete:flag" json:"is_del"`
+	IsDel      soft_delete.DeletedAt `jinzhu:"softDelete:flag" json:"is_del"`
 }
 
 // BeforeCreate 在创建前修改
