@@ -14,6 +14,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func commandRun(_cmd *cobra.Command, _args []string) {
+func commandRunHandle(_cmd *cobra.Command, _args []string) {
 
 }
