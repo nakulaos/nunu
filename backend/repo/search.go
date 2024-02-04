@@ -1,6 +1,6 @@
 /**
  ******************************************************************************
- * @file           : data_store.go
+ * @file           : search.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
@@ -8,8 +8,4 @@
  ******************************************************************************
  */
 
-package core
-
-// DataStore 所有数据服务接口
-type DataStore interface {
-}
+package repo

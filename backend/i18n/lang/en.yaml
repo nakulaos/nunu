@@ -1,1 +1,1 @@
-City: "HongKong"
+CityName: "city : {{  .city }}"

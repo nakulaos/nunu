@@ -52,4 +52,5 @@ func Execute() {
 
 func init() {
 	initMigrationCommand()
+	initRunCommand()
 }

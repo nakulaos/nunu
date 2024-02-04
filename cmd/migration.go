@@ -16,7 +16,7 @@ import (
 	"nunu/backend/init/conf"
 	"nunu/backend/init/gorm"
 	"nunu/backend/init/log"
-	"nunu/backend/repo/model"
+	"nunu/backend/model"
 )
 
 func initMigrationCommand() {

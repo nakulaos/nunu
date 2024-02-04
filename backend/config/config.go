@@ -22,4 +22,5 @@ type Config struct {
 	SentryConf      SentryConf
 	RedisConf       RedisConf
 	MailConf        MailConf
+	WebServerConf   WebServerConf
 }

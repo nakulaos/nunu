@@ -8,9 +8,9 @@
  ******************************************************************************
  */
 
-package core
+package repo
 
-import "nunu/backend/repo/model"
+import "nunu/backend/model"
 
 type IUserManageRepo interface {
 	GetUserByID(id uint64) (*model.User, error)

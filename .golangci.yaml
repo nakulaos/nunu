@@ -36,10 +36,6 @@ linters:
     - funlen
     # 控制golang的包引用的顺序
     - gci
-    # 禁止使用全局变量  --需要使用  //nolint:gochecknoglobals // 说明原因
-    - gochecknoglobals
-    # 禁止使用init函数
-    - gochecknoinits
     # 如果有相同的string变量请使用consts替换
     - goconst
     # 检查if语句是否有简单的语法

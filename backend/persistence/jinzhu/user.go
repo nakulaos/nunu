@@ -12,19 +12,19 @@ package jinzhu
 
 import (
 	"gorm.io/gorm"
-	"nunu/backend/repo/core"
-	"nunu/backend/repo/model"
+	"nunu/backend/model"
+	"nunu/backend/repo"
 )
 
 var (
-	_ core.IUserManageRepo = (*UserManageRepo)(nil)
+	_ repo.IUserManageRepo = (*UserManageRepo)(nil)
 )
 
 type UserManageRepo struct {
 	db *gorm.DB
 }
 
-func NewUserManageRepo(db *gorm.DB) core.IUserManageRepo {
+func NewUserManageRepo(db *gorm.DB) repo.IUserManageRepo {
 	return &UserManageRepo{db: db}
 }
 

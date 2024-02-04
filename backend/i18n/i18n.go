@@ -14,56 +14,57 @@ import (
 	"embed"
 	ginI18n "github.com/gin-contrib/i18n"
 	"github.com/gin-gonic/gin"
+	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
 	"gopkg.in/yaml.v3"
+	"strings"
 )
 
 //go:embed lang/*
 var fs embed.FS
 
-//
-//func GetMsgWithMap(key string, maps map[string]interface{}) string {
-//	content := ""
-//	if maps == nil {
-//		content = ginI18n.MustGetMessage(&i18n.LocalizeConfig{
-//			MessageID: key,
-//		})
-//	} else {
-//		content = ginI18n.MustGetMessage(&i18n.LocalizeConfig{
-//			MessageID:    key,
-//			TemplateData: maps,
-//		})
-//	}
-//
-//	content = strings.ReplaceAll(content, ": <no value>", "")
-//	if content == "" {
-//		return key
-//	} else {
-//		return content
-//	}
-//}
-//
-//func GetErrMsg(key string, maps map[string]interface{}) string {
-//	content := ""
-//	if maps == nil {
-//		content = ginI18n.MustGetMessage(&i18n.LocalizeConfig{
-//			MessageID: key,
-//		})
-//	} else {
-//		content = ginI18n.MustGetMessage(&i18n.LocalizeConfig{
-//			MessageID:    key,
-//			TemplateData: maps,
-//		})
-//	}
-//	return content
-//}
-//
-//func GetMsgByKey(key string) string {
-//	content := ginI18n.MustGetMessage(&i18n.LocalizeConfig{
-//		MessageID: key,
-//	})
-//	return content
-//}
+func GetMsgWithMap(c *gin.Context, key string, maps map[string]interface{}) string {
+	content := ""
+	if maps == nil {
+		content = ginI18n.MustGetMessage(c, &i18n.LocalizeConfig{
+			MessageID: key,
+		})
+	} else {
+		content = ginI18n.MustGetMessage(c, &i18n.LocalizeConfig{
+			MessageID:    key,
+			TemplateData: maps,
+		})
+	}
+
+	content = strings.ReplaceAll(content, ": <no value>", "")
+	if content == "" {
+		return key
+	} else {
+		return content
+	}
+}
+
+func GetErrMsg(c *gin.Context, key string, maps map[string]interface{}) string {
+	content := ""
+	if maps == nil {
+		content = ginI18n.MustGetMessage(c, &i18n.LocalizeConfig{
+			MessageID: key,
+		})
+	} else {
+		content = ginI18n.MustGetMessage(c, &i18n.LocalizeConfig{
+			MessageID:    key,
+			TemplateData: maps,
+		})
+	}
+	return content
+}
+
+func GetMsgByKey(c *gin.Context, key string) string {
+	content := ginI18n.MustGetMessage(c, &i18n.LocalizeConfig{
+		MessageID: key,
+	})
+	return content
+}
 
 // GinI18nLocalize 应在初始化router时进行全局注册
 func GinI18nLocalize() gin.HandlerFunc {

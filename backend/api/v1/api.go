@@ -1,13 +1,15 @@
 /**
  ******************************************************************************
- * @file           : dto.go
+ * @file           : api.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
- * @date           : 2024/1/23
+ * @date           : 2024/2/4
  ******************************************************************************
  */
 
 package v1
 
-// req,response 结构体
+type ApiGroup struct {
+	AdminApi
+}

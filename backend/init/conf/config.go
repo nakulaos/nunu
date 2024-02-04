@@ -49,7 +49,8 @@ func initConf() {
 		"LoggerMeili": &_config.LoggerMeiliConf,
 		"Sentry":      &_config.SentryConf,
 		"Redis":       &_config.RedisConf,
-		"MailConf":    &_config.MailConf,
+		"Mail":        &_config.MailConf,
+		"WebServer":   &_config.WebServerConf,
 	}
 
 	for k, v := range objs {

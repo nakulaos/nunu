@@ -31,7 +31,13 @@ func TestGinI18nLocalize(t *testing.T) {
 
 	router.Use(GinI18nLocalize())
 	router.GET("/city", func(c *gin.Context) {
-		s, _ := ginI18n.GetMessage(c, &i18n.LocalizeConfig{MessageID: "City"})
+		city := "香港"
+		maps := make(map[string]interface{})
+		maps["city"] = city
+		s, _ := ginI18n.GetMessage(c, &i18n.LocalizeConfig{
+			MessageID:    "CityName",
+			TemplateData: maps,
+		})
 		c.JSON(http.StatusOK, &BaseRep{
 			Code: 0,
 			Msg:  "",

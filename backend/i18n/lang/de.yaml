@@ -1,1 +1,1 @@
-City: "stadt"
+CityName: "stadt:{{ .city }}"
