@@ -11,12 +11,14 @@
 package router
 
 import (
+	sentrygin "github.com/getsentry/sentry-go/gin"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"nunu/backend/i18n"
-	implApi "nunu/backend/init/api/v1"
+	"nunu/backend/init/conf"
 	v1 "nunu/backend/router/v1"
+	"nunu/script/wire"
 )
 
 func InitRouter() *gin.Engine {
@@ -34,6 +36,15 @@ func InitRouter() *gin.Engine {
 
 	// 国际化中间件
 	router.Use(i18n.GinI18nLocalize())
+
+	senryConf := conf.GetConfig().SentryConf
+	if senryConf.UseSentryGin() {
+		router.Use(sentrygin.New(sentrygin.Options{
+			// repanic配置Sentry恢复后是否应该重新panic，在大多数情况下应该设置为true，
+			// as gin。默认包括它自己的恢复中间件处理http响应。
+			Repanic: true,
+		}))
+	}
 
 	// 默认404
 	router.NoRoute(func(c *gin.Context) {
@@ -55,7 +66,7 @@ func InitRouter() *gin.Engine {
 
 	PrivateGroup := router.Group("/api/v1")
 	{
-		systemRouter.InitAdminRouter(PrivateGroup, implApi.ImplAdminApi)
+		systemRouter.InitAdminRouter(PrivateGroup, wire.CreateAdminApi())
 	}
 
 	return router

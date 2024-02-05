@@ -14,7 +14,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"nunu/backend/IService"
-	"nunu/backend/dto"
 )
 
 type AdminApi struct {
@@ -26,11 +25,11 @@ func NewAdminApi(admin IService.IAdminService) *AdminApi {
 }
 
 func (a *AdminApi) ChangeSiteInfo(c *gin.Context) {
-	req := &dto.ChangeUserStatusReq{}
-	err := c.ShouldBindJSON(req)
-	if err != nil {
-
-	}
-	a.Admin.ChangeUserStatus(req)
+	//req := &dto.ChangeUserStatusReq{}
+	//err := c.ShouldBindJSON(req)
+	//if err != nil {
+	//
+	//}
+	//a.Admin.ChangeUserStatus(req)
 	c.JSON(http.StatusOK, 0)
 }
