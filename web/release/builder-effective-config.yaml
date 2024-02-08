@@ -1,0 +1,12 @@
+directories:
+  output: E:\Codefield\nunu\web\release
+  buildResources: build
+  app: E:\Codefield\nunu\web\dist
+appId: com.example.app
+productName: vite-electron
+asar: true
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+files: []
+electronVersion: 28.1.4

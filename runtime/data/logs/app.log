@@ -1,0 +1,26 @@
+{"level":"warning","msg":"This feature is not supported at the moment!","time":"2024-02-01T22:09:31+08:00"}
+{"level":"warning","msg":"This feature is not supported at the moment!","time":"2024-02-01T22:11:18+08:00"}
+{"level":"debug","msg":"use mysql as db","time":"2024-02-01T22:13:01+08:00"}
+{"level":"debug","msg":"Database is being migrated...","time":"2024-02-01T22:13:01+08:00"}
+{"level":"debug","msg":"use postgres mysql as db","time":"2024-02-01T22:15:02+08:00"}
+{"level":"debug","msg":"Database is being migrated...","time":"2024-02-01T22:15:02+08:00"}
+{"level":"info","msg":"E:/Codefield/nunu/cmd/migration.go:42 错误: 语法错误 在 \"ENGINE\" 或附近的 (SQLSTATE 42601)\n[15.579ms] [rows:0] CREATE TABLE \"p_user\" (\"id\" bigserial,\"created_on\" bigint,\"modified_on\" bigint,\"deleted_on\" bigint,\"is_del\" bigint,\"nickname\" text,\"username\" text,\"phone\" text,\"password\" text,\"salt\" text,\"status\" bigint,\"avatar\" text,\"balance\" bigint,\"is_admin\" boolean,\"mail\" text,PRIMARY KEY (\"id\"))ENGINE=InnoDB","time":"2024-02-01T22:15:02+08:00"}
+{"level":"debug","msg":"use postgres mysql as db","time":"2024-02-01T22:16:31+08:00"}
+{"level":"debug","msg":"Database is being migrated...","time":"2024-02-01T22:16:32+08:00"}
+{"level":"info","msg":"E:/Codefield/nunu/cmd/migration.go:42 错误: 语法错误 在 \"ENGINE\" 或附近的 (SQLSTATE 42601)\n[2.139ms] [rows:0] CREATE TABLE \"p_user\" (\"id\" bigserial,\"created_on\" bigint,\"modified_on\" bigint,\"deleted_on\" bigint,\"is_del\" bigint,\"nickname\" text,\"username\" text,\"phone\" text,\"password\" text,\"salt\" text,\"status\" bigint,\"avatar\" text,\"balance\" bigint,\"is_admin\" boolean,\"mail\" text,PRIMARY KEY (\"id\"))ENGINE=InnoDB","time":"2024-02-01T22:16:32+08:00"}
+{"level":"debug","msg":"use postgres mysql as db","time":"2024-02-01T22:17:17+08:00"}
+{"level":"debug","msg":"Database is being migrated...","time":"2024-02-01T22:17:17+08:00"}
+{"level":"info","msg":"E:/Codefield/nunu/cmd/migration.go:42 错误: 语法错误 在 \"ENGINE\" 或附近的 (SQLSTATE 42601)\n[2.322ms] [rows:0] CREATE TABLE \"p_user\" (\"id\" bigserial,\"created_on\" bigint,\"modified_on\" bigint,\"deleted_on\" bigint,\"is_del\" bigint,\"nickname\" text,\"username\" text,\"phone\" text,\"password\" text,\"salt\" text,\"status\" bigint,\"avatar\" text,\"balance\" bigint,\"is_admin\" boolean,\"mail\" text,PRIMARY KEY (\"id\"))ENGINE=InnoDB","time":"2024-02-01T22:17:17+08:00"}
+{"level":"debug","msg":"use postgres mysql as db","time":"2024-02-01T22:24:04+08:00"}
+{"level":"debug","msg":"Database is being migrated...","time":"2024-02-01T22:24:04+08:00"}
+{"level":"error","msg":"An error occurred while migrating the database:%!s(\u003cnil\u003e)","time":"2024-02-01T22:24:05+08:00"}
+{"level":"debug","msg":"use default of mysql as db","time":"2024-02-01T22:24:46+08:00"}
+{"level":"debug","msg":"Database is being migrated...","time":"2024-02-01T22:24:46+08:00"}
+{"level":"error","msg":"An error occurred while migrating the database:%!s(\u003cnil\u003e)","time":"2024-02-01T22:24:46+08:00"}
+{"level":"debug","msg":"use sqlite3 as db","time":"2024-02-01T22:25:29+08:00"}
+{"level":"debug","msg":"Database is being migrated...","time":"2024-02-01T22:25:29+08:00"}
+{"level":"error","msg":"An error occurred while migrating the database:%!s(\u003cnil\u003e)","time":"2024-02-01T22:25:29+08:00"}
+{"level":"debug","msg":"use sqlite3 as db","time":"2024-02-05T00:40:42+08:00"}
+{"level":"debug","msg":"Database is being migrated...","time":"2024-02-05T00:40:42+08:00"}
+{"level":"error","msg":"An error occurred while migrating the database:%!s(\u003cnil\u003e)","time":"2024-02-05T00:40:42+08:00"}
+{"level":"debug","msg":"use sqlite3 as db","time":"2024-02-05T14:56:25+08:00"}
