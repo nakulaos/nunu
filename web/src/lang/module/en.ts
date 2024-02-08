@@ -4,6 +4,9 @@ const  message = {
     }
 };
 
+import fit2cloudEnLocale from 'fit2cloud-ui-plus/src/locale/lang/en';
+
 export default{
-    ...message
+    ...message,
+        ...fit2cloudEnLocale,
 }

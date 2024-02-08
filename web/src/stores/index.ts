@@ -9,9 +9,14 @@ export const GlobalStore = defineStore({
         state: (): GlobalState => ({
             theme: localStorage.getItem("NUNU-THEME"),
             desktopModelShow: document.body.clientWidth > 821,
+            test:"aaa",
         }),
         getters: {},
-        actions: {},
+        actions: {
+            initTest(s:string){
+                this.test=s;
+            }
+        },
         persist: piniaPersistConfig('GlobalState'),
 
     }

@@ -1,15 +1,17 @@
 <template>
-<p>
-  {{ $t('commons.city') }}
-</p>
-
+  <el-button @click="test">
+    click
+  </el-button>
 </template>
 
 
 <script lang="ts" setup>
 import {GlobalStore} from "@/stores";
 
+function test() {
+  globalStore.initTest("aaaa")
 
+}
 const globalStore = GlobalStore()
 
 </script>
