@@ -3,8 +3,8 @@ import { app, BrowserWindow } from 'electron'
 // 等待Electron应用就绪后创建BrowserWindow窗口
 app.whenReady().then(async () => {
     const win = await new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 950,
+        height: 700,
 
         // 配置窗口的WebPreferences选项，用于控制渲染进程的行为
         webPreferences: {
