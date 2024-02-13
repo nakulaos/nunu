@@ -43,8 +43,11 @@ func migrationCommandHandle(_cmd *cobra.Command, _args []string) {
 		err := db.AutoMigrate(
 			//TODO: 等待补充...
 			&model.User{},
+			&model.UserMetric{},
 		)
-		logrus.Errorf("An error occurred while migrating the database:%s", err)
+		if err != nil {
+			logrus.Errorf("An error occurred while migrating the database:%+v", err)
+		}
 
 	} else {
 		logrus.Warnln("This feature is not supported at the moment!")

@@ -1,18 +1,11 @@
 /**
  ******************************************************************************
- * @file           : wire_injector.go
+ * @file           : datbase.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
- * @date           : 2024/2/5
+ * @date           : 2024/2/13
  ******************************************************************************
  */
 
-package jinzhu
-
-import "github.com/google/wire"
-
-var Set = wire.NewSet(
-	NewUserManageRepo,
-	NewUserMetricsRepo,
-)
+package database

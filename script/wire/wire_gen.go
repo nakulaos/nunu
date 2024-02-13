@@ -18,7 +18,8 @@ import (
 
 func CreateAdminApi() *v1.AdminApi {
 	db := gorm.GetGormDB()
-	iUserManageRepo := jinzhu.NewUserManageRepo(db)
+	iUserMetricsRepo := jinzhu.NewUserMetricsRepo(db)
+	iUserManageRepo := jinzhu.NewUserManageRepo(db, iUserMetricsRepo)
 	iAdminService := service.NewAdminService(iUserManageRepo)
 	adminApi := v1.NewAdminApi(iAdminService)
 	return adminApi

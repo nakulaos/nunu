@@ -1,18 +1,16 @@
 /**
  ******************************************************************************
- * @file           : wire_injector.go
+ * @file           : db.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
- * @date           : 2024/2/5
+ * @date           : 2024/2/13
  ******************************************************************************
  */
 
-package jinzhu
+package constant
 
-import "github.com/google/wire"
-
-var Set = wire.NewSet(
-	NewUserManageRepo,
-	NewUserMetricsRepo,
+var (
+	TableUser       = "user"
+	TableUserMetric = "user_metric"
 )

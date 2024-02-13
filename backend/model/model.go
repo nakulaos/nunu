@@ -18,7 +18,7 @@ import (
 
 // Model 公共模块
 type Model struct {
-	ID         int64                 `jinzhu:"primary_key" json:"id"`
+	ID         uint64                `jinzhu:"primary_key" json:"id"`
 	CreatedOn  int64                 `json:"created_on"`
 	ModifiedOn int64                 `json:"modified_on"`
 	DeletedOn  int64                 `json:"deleted_on"`

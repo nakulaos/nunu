@@ -24,3 +24,17 @@
 {"level":"debug","msg":"Database is being migrated...","time":"2024-02-05T00:40:42+08:00"}
 {"level":"error","msg":"An error occurred while migrating the database:%!s(\u003cnil\u003e)","time":"2024-02-05T00:40:42+08:00"}
 {"level":"debug","msg":"use sqlite3 as db","time":"2024-02-05T14:56:25+08:00"}
+{"level":"debug","msg":"use sqlite3 as db","time":"2024-02-13T13:57:22+08:00"}
+{"level":"debug","msg":"Database is being migrated...","time":"2024-02-13T13:57:22+08:00"}
+{"level":"error","msg":"An error occurred while migrating the database:%!s(\u003cnil\u003e)","time":"2024-02-13T13:57:22+08:00"}
+{"level":"debug","msg":"use sqlite3 as db","time":"2024-02-13T13:58:37+08:00"}
+{"level":"debug","msg":"Database is being migrated...","time":"2024-02-13T13:58:37+08:00"}
+{"level":"error","msg":"An error occurred while migrating the database:%!s(\u003cnil\u003e)","time":"2024-02-13T13:58:37+08:00"}
+{"level":"debug","msg":"use sqlite3 as db","time":"2024-02-13T13:59:26+08:00"}
+{"level":"debug","msg":"Database is being migrated...","time":"2024-02-13T13:59:26+08:00"}
+{"level":"error","msg":"An error occurred while migrating the database:\u003cnil\u003e","time":"2024-02-13T13:59:26+08:00"}
+{"level":"debug","msg":"use sqlite3 as db","time":"2024-02-13T14:01:05+08:00"}
+{"level":"debug","msg":"Database is being migrated...","time":"2024-02-13T14:01:05+08:00"}
+{"level":"error","msg":"An error occurred while migrating the database:\u003cnil\u003e","time":"2024-02-13T14:01:05+08:00"}
+{"level":"debug","msg":"use sqlite3 as db","time":"2024-02-13T14:02:21+08:00"}
+{"level":"debug","msg":"Database is being migrated...","time":"2024-02-13T14:02:21+08:00"}

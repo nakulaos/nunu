@@ -35,8 +35,8 @@ linters:
     # 禁止出现长函数
     - funlen
     # 控制golang的包引用的顺序
-    - gci
-    # 如果有相同的string变量请使用consts替换
+#    - gci
+#    # 如果有相同的string变量请使用consts替换
     - goconst
     # 检查if语句是否有简单的语法
     - ifshort
@@ -96,8 +96,8 @@ linters:
     - predeclared
     # 去掉没有必要的type转换
     - unconvert
-    # 强制使用空行
-    - wsl
+#    # 强制使用空行
+#    - wsl
     # 检查文件头部和尾部的换行
     - whitespace
     # 替换golint的

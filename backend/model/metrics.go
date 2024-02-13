@@ -1,18 +1,18 @@
 /**
  ******************************************************************************
- * @file           : wire_injector.go
+ * @file           : metrics.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
- * @date           : 2024/2/5
+ * @date           : 2024/2/13
  ******************************************************************************
  */
 
-package jinzhu
+package model
 
-import "github.com/google/wire"
-
-var Set = wire.NewSet(
-	NewUserManageRepo,
-	NewUserMetricsRepo,
-)
+type UserMetric struct {
+	*Model
+	UserId         uint64
+	TweetsCount    int
+	LatestTrendsOn int64
+}
