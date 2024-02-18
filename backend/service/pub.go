@@ -32,8 +32,8 @@ import (
 )
 
 var _ IService.IPubService = (*PubService)(nil)
-var _maxCountCaptcha int64 = 10 // 验证码发送次数
-var _maxCaptchaTimes int = 5    // 单个验证码（手机，邮箱）最大使用次数
+var _maxCountCaptcha int64 = 3 // 验证码发送次数
+var _maxCaptchaTimes int = 5   // 单个验证码（手机，邮箱）最大使用次数
 
 type PubService struct {
 	UserManageRepo      repo.IUserManageRepo
@@ -116,7 +116,7 @@ func (s *PubService) Register(req *dto.RegisterReq) (*dto.RegisterResp, xerror.E
 
 	// 检查账号是否重复
 	user, err := s.UserManageRepo.GetUserByUsername(req.Username)
-	if user.Model != nil && user.ID > 0 {
+	if err == nil && user.Model != nil && user.ID > 0 {
 		return nil, xerror.NewErrorWithMapAndXError(constant.ErrUsernameHasExisted,
 			map[string]interface{}{"username": user.Username})
 	}
@@ -128,9 +128,10 @@ func (s *PubService) Register(req *dto.RegisterReq) (*dto.RegisterResp, xerror.E
 	// 邮箱重复性检查
 	if req.Mail != "" {
 		// 如果邮箱不为空
+		// 判断邮箱是否被绑定
 		user, err = s.UserManageRepo.GetUserByMail(req.Mail)
-		if err != nil && user.Model != nil && user.ID > 0 && user.IsDel == 0 {
-			return nil, xerror.NewErrorWithMapAndXError(constant.ErrExistedUserPhone, map[string]interface{}{"mail": req.Mail})
+		if err == nil && user.Model != nil && user.ID > 0 && user.IsDel == 0 {
+			return nil, xerror.NewErrorWithMapAndXError(constant.ErrExistedUserMail, map[string]interface{}{"mail": req.Mail})
 		}
 
 		c, err := s.SecurityServiceRepo.GetLatestMailCaptcha(req.Mail)
@@ -138,19 +139,24 @@ func (s *PubService) Register(req *dto.RegisterReq) (*dto.RegisterResp, xerror.E
 			logrus.Errorf("Internal server error was happened when getting email verification code:%s", errors.Wrapf(err, "req.mail:%s", req.Mail).Error())
 			return nil, xerror.NewErrorWithMapAndXError(constant.ErrInternalServer, nil)
 		}
+		// 增加验证码使用次数
+		s.SecurityServiceRepo.UseMailCaptcha(c)
+		// 验证码错误
 		if c.Captcha != req.MailCaptcha {
 			logrus.Errorf("The email (%s) verification code is wrong:req.captcha:%s,internal captcha:%s", req.Mail, req.MailCaptcha, c.Captcha)
 			return nil, xerror.NewErrorWithMapAndXError(constant.ErrErrorMailCaptcha, nil)
 		}
+		// 过期
 		if c.ExpiredOn < time.Now().Unix() {
 			logrus.Errorf("The email (%s) verification code is expired:req.captcha:%s,internal captcha:%s", req.Mail, req.MailCaptcha, c.Captcha)
 			return nil, xerror.NewErrorWithMapAndXError(constant.ErrEmailVerificationCodeExpired, nil)
 		}
+		// 使用次数过多
 		if c.UseTimes >= _maxCaptchaTimes {
 			logrus.Errorf("\"The email verification code has reached the maximum number of times it can be used:req.mail:%s,internal.captcha:%s", req.Mail, c.Captcha)
 			return nil, xerror.NewErrorWithMapAndXError(constant.ErrMaxMailCaptchaUseTimes, nil)
 		}
-		s.SecurityServiceRepo.UseMailCaptcha(c)
+
 	}
 
 	// 验证手机号

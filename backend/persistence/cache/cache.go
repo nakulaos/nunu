@@ -24,7 +24,16 @@ type RedisCacheRepo struct {
 }
 
 func (r *RedisCacheRepo) GetCountMailCaptcha(mail string) (int64, error) {
-	return r.c.Get(_mailCaptchaKey + mail).Int64()
+	cmd := r.c.Get(_mailCaptchaKey + mail)
+	if cmd.Err() == nil {
+		return cmd.Int64()
+	} else {
+		currentTime := time.Now()
+		endTime := time.Date(currentTime.Year(), currentTime.Month(), currentTime.Day(),
+			23, 59, 59, 0, currentTime.Location())
+		err := r.c.Set(_mailCaptchaKey+mail, 0, endTime.Sub(currentTime)).Err()
+		return 0, err
+	}
 }
 
 func (r *RedisCacheRepo) IncrCountMailCaptcha(mail string) (err error) {
@@ -32,7 +41,7 @@ func (r *RedisCacheRepo) IncrCountMailCaptcha(mail string) (err error) {
 		currentTime := time.Now()
 		endTime := time.Date(currentTime.Year(), currentTime.Month(), currentTime.Day(),
 			23, 59, 59, 0, currentTime.Location())
-		err = r.c.Expire(_mailCaptchaKey+mail, endTime.Sub(currentTime)/time.Second).Err()
+		err = r.c.Expire(_mailCaptchaKey+mail, endTime.Sub(currentTime)).Err()
 	}
 	return
 }
