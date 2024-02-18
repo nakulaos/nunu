@@ -39,18 +39,19 @@ func initConf() {
 	}
 
 	objs := map[string]any{
-		"MySQL":       &_config.MysqlConf,
-		"Database":    &_config.DatabaseConf,
-		"Postgres":    &_config.PostgresConf,
-		"Sqlite3":     &_config.Sqlite3Conf,
-		"Logger":      &_config.LoggerConf,
-		"LoggerFile":  &_config.LoggerFileConf,
-		"LoggerZinc":  &_config.LoggerZincConf,
-		"LoggerMeili": &_config.LoggerMeiliConf,
-		"Sentry":      &_config.SentryConf,
-		"Redis":       &_config.RedisConf,
-		"Mail":        &_config.MailConf,
-		"WebServer":   &_config.WebServerConf,
+		"MySQL":         &_config.MysqlConf,
+		"Database":      &_config.DatabaseConf,
+		"Postgres":      &_config.PostgresConf,
+		"Sqlite3":       &_config.Sqlite3Conf,
+		"Logger":        &_config.LoggerConf,
+		"LoggerFile":    &_config.LoggerFileConf,
+		"LoggerZinc":    &_config.LoggerZincConf,
+		"LoggerMeili":   &_config.LoggerMeiliConf,
+		"Sentry":        &_config.SentryConf,
+		"Redis":         &_config.RedisConf,
+		"Mail":          &_config.MailConf,
+		"WebServer":     &_config.WebServerConf,
+		"CustomProfile": &_config.CustomProfile,
 	}
 
 	for k, v := range objs {

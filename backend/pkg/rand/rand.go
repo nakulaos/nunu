@@ -1,18 +1,20 @@
 /**
  ******************************************************************************
- * @file           : wire_injector.go
+ * @file           : rand.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
- * @date           : 2024/2/5
+ * @date           : 2024/2/18
  ******************************************************************************
  */
 
-package v1
+package rand
 
-import "github.com/google/wire"
-
-var Set = wire.NewSet(
-	NewAdminApi,
-	NewPubAdmin,
+import (
+	"math/rand"
+	"time"
 )
+
+func NewRand() *rand.Rand {
+	return rand.New(rand.NewSource(time.Now().UnixNano()))
+}

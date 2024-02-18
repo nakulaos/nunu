@@ -1,18 +1,19 @@
 /**
  ******************************************************************************
- * @file           : wire_injector.go
+ * @file           : conf_custom_profile.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
- * @date           : 2024/2/5
+ * @date           : 2024/2/13
  ******************************************************************************
  */
 
-package v1
+package config
 
-import "github.com/google/wire"
+type CustomProfile struct {
+	UserProfile UserProfile
+}
 
-var Set = wire.NewSet(
-	NewAdminApi,
-	NewPubAdmin,
-)
+type UserProfile struct {
+	AllowNewUserRegister bool
+}

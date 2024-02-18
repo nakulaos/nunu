@@ -1,18 +1,20 @@
 /**
  ******************************************************************************
- * @file           : wire_injector.go
+ * @file           : constant.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
- * @date           : 2024/2/5
+ * @date           : 2024/2/13
  ******************************************************************************
  */
 
-package v1
+package service
 
-import "github.com/google/wire"
+const (
+	userStatusNormal = iota
+	userStatusClosed
+)
 
-var Set = wire.NewSet(
-	NewAdminApi,
-	NewPubAdmin,
+var (
+	_allowNewUserRegister_ bool
 )

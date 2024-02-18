@@ -85,7 +85,7 @@ Sentry: # Sentry配置
   TracesSampleRate: 1.0
   AttachLogrus: True  # logrus是否附加到Sentry
   AttachGin: True
-  Enable: True
+  Enable: false
 
 EventsManager: # 事件管理器的配置参数
   MinWorker: 64               # 最小后台工作者, 设置范围[5, ++], 默认64
@@ -169,6 +169,11 @@ Postgres: # PostgreSQL数据库
   SSLMode: disable
   ApplicationName: nunu
   Enable: false
+
+
+CustomProfile:
+  UserProfile:
+    AllowNewUserRegister: true # 是否允许新用户注册
 
 
 

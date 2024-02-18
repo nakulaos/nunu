@@ -4,15 +4,14 @@
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
- * @date           : 2024/2/5
+ * @date           : 2024/2/18
  ******************************************************************************
  */
 
-package v1
+package cache
 
 import "github.com/google/wire"
 
 var Set = wire.NewSet(
-	NewAdminApi,
-	NewPubAdmin,
+	NewRedisCacheRepo,
 )

@@ -10,7 +10,11 @@ import (
 	"github.com/google/wire"
 	"nunu/backend/api/v1"
 	"nunu/backend/init/gorm"
+	"nunu/backend/init/mail"
+	"nunu/backend/init/redis"
+	"nunu/backend/persistence/cache"
 	"nunu/backend/persistence/jinzhu"
+	"nunu/backend/pkg/rand"
 	"nunu/backend/service"
 )
 
@@ -25,6 +29,20 @@ func CreateAdminApi() *v1.AdminApi {
 	return adminApi
 }
 
+func CreatePubApi() *v1.PubApi {
+	db := gorm.GetGormDB()
+	iUserMetricsRepo := jinzhu.NewUserMetricsRepo(db)
+	iUserManageRepo := jinzhu.NewUserManageRepo(db, iUserMetricsRepo)
+	randRand := rand.NewRand()
+	iMailVerifyServiceRepo := mail.GetMailVerify()
+	iSecurityServiceRepo := jinzhu.NewSecurityServiceRepo(db, randRand, iMailVerifyServiceRepo)
+	clusterClient := redis.GetRedisClient()
+	iRedisCacheRepo := cache.NewRedisCacheRepo(clusterClient)
+	iPubService := service.NewPubService(iUserManageRepo, iSecurityServiceRepo, iRedisCacheRepo)
+	pubApi := v1.NewPubAdmin(iPubService)
+	return pubApi
+}
+
 // wire_injectors.go:
 
-var allProviders = wire.NewSet(jinzhu.Set, v1.Set, service.Set, gorm.GetGormDB)
+var allProviders = wire.NewSet(jinzhu.Set, v1.Set, service.Set, gorm.GetGormDB, mail.GetMailVerify, redis.GetRedisClient, rand.NewRand, cache.Set)

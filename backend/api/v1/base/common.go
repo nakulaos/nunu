@@ -1,18 +1,17 @@
 /**
  ******************************************************************************
- * @file           : wire_injector.go
+ * @file           : entry.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
- * @date           : 2024/2/5
+ * @date           : 2024/2/14
  ******************************************************************************
  */
 
-package v1
+package base
 
-import "github.com/google/wire"
-
-var Set = wire.NewSet(
-	NewAdminApi,
-	NewPubAdmin,
-)
+type Response struct {
+	Code int         `json:"code"`
+	Msg  string      `json:"msg,omitempty"`
+	Data interface{} `json:"data,omitempty"`
+}

@@ -1,0 +1,4 @@
+Success: “success”
+
+ErrInvalidParams: "Request parameter error： {{ .detail }} "
+ErrDisallowUserRegister: "Dieses System erlaubt zur Zeit keine Benutzerregistrierung! Bitte wenden Sie sich an den Administrator oder die zuständige Person."

@@ -23,4 +23,5 @@ type Config struct {
 	RedisConf       RedisConf
 	MailConf        MailConf
 	WebServerConf   WebServerConf
+	CustomProfile   CustomProfile
 }

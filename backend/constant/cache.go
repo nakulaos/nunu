@@ -1,18 +1,17 @@
 /**
  ******************************************************************************
- * @file           : wire_injector.go
+ * @file           : cache.go
  * @author         : nakulaos
  * @brief          : None
  * @attention      : None
- * @date           : 2024/2/5
+ * @date           : 2024/2/18
  ******************************************************************************
  */
 
-package v1
+package constant
 
-import "github.com/google/wire"
-
-var Set = wire.NewSet(
-	NewAdminApi,
-	NewPubAdmin,
+var (
+	ImgCaptchaKey   = "nunu_img_captcha "
+	MailCaptchaKey  = "nunu_mail_captcha "
+	PhoneCaptchaKey = "nunu_phone_captcha "
 )

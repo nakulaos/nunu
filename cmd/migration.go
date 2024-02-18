@@ -44,6 +44,7 @@ func migrationCommandHandle(_cmd *cobra.Command, _args []string) {
 			//TODO: 等待补充...
 			&model.User{},
 			&model.UserMetric{},
+			&model.Captcha{},
 		)
 		if err != nil {
 			logrus.Errorf("An error occurred while migrating the database:%+v", err)
