@@ -9,12 +9,13 @@ export const GlobalStore = defineStore({
         state: (): GlobalState => ({
             theme: localStorage.getItem("NUNU-THEME"),
             desktopModelShow: document.body.clientWidth > 821,
-            test:"aaa",
+            language:"",
+            isLogin:false,
         }),
         getters: {},
         actions: {
-            initTest(s:string){
-                this.test=s;
+            setLoginStatus(Login:boolean){
+                this.isLogin = Login
             }
         },
         persist: piniaPersistConfig('GlobalState'),

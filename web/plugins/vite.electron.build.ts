@@ -1,7 +1,8 @@
+// @ts-nocheck
 import type { Plugin } from 'vite'
 import * as electronBuilder from 'electron-builder'
-import path from 'path'
-import fs from 'fs'
+import  path from 'path'
+import  fs from 'fs'
 
 
 // 导出Vite插件函数
