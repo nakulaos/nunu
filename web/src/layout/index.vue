@@ -47,7 +47,8 @@ const globalStore = GlobalStore();
   .main-wrapper{
     background-color: antiquewhite;
     display: flex;
-    min-height: 90vh;
+    height: 90vh;
+    overflow: auto;
     justify-content: center;
 
     .app-container{
