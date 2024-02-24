@@ -52,6 +52,7 @@ func initConf() {
 		"Mail":          &_config.MailConf,
 		"WebServer":     &_config.WebServerConf,
 		"CustomProfile": &_config.CustomProfile,
+		"JWT":           &_config.JwtConf,
 	}
 
 	for k, v := range objs {

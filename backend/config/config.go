@@ -24,4 +24,5 @@ type Config struct {
 	MailConf        MailConf
 	WebServerConf   WebServerConf
 	CustomProfile   CustomProfile
+	JwtConf         JwtConf
 }

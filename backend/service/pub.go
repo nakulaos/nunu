@@ -32,8 +32,9 @@ import (
 )
 
 var _ IService.IPubService = (*PubService)(nil)
-var _maxCountCaptcha int64 = 3 // 验证码发送次数
-var _maxCaptchaTimes int = 5   // 单个验证码（手机，邮箱）最大使用次数
+var _maxCountCaptcha int64 = 3   // 验证码发送次数
+var _maxCaptchaTimes int = 5     // 单个验证码（手机，邮箱）最大使用次数
+var _MaxLoginErrTimes int64 = 10 // 登录错误次数太多
 
 type PubService struct {
 	UserManageRepo      repo.IUserManageRepo
@@ -192,7 +193,42 @@ func (s *PubService) Register(req *dto.RegisterReq) (*dto.RegisterResp, xerror.E
 
 }
 
-func (s *PubService) Login(req *dto.LoginReq) (*dto.LoginResp, xerror.Error) {
-	//TODO implement me
-	panic("implement me")
+func (s *PubService) LoginWithUsername(req *dto.LoginReqWithUserName) (*dto.LoginResp, xerror.Error) {
+	user, err := s.UserManageRepo.GetUserByUsername(req.Username)
+	if err != nil {
+		// 用户名没有注册
+		logrus.Errorf("Ds.GetUserByUsername err:%s", err)
+		return nil, xerror.NewErrorWithMapAndXError(constant.ErrUnauthorizedAuthNotExist, nil)
+	}
+	if user.Model != nil && user.ID > 0 {
+		// 登录错误次数过多
+		if count, err := s.RedisCacheRepo.GetCountLoginErr(user.ID); err == nil && count > _MaxLoginErrTimes {
+			return nil, xerror.NewErrorWithMapAndXError(constant.ErrTooManyLoginError, nil)
+		}
+		// 核对密码
+		if utils.ValidPassword(user.Password, req.Password, user.Salt) {
+			// 核对用户是否被封禁
+			if user.Status == userStatusClosed {
+				return nil, xerror.NewErrorWithMapAndXError(constant.ErrUserHasBeenBanned, nil)
+			}
+			// 清除登录错误技术
+			s.RedisCacheRepo.DelCountLoginErr(user.ID)
+		} else {
+			// 增加登录错误计数
+			s.RedisCacheRepo.IncrCountLoginErr(user.ID)
+			count, _ := s.RedisCacheRepo.GetCountLoginErr(user.ID)
+			return nil, xerror.NewErrorWithMapAndXError(constant.ErrUnauthorizedAuthFailed, map[string]interface{}{"count": _MaxLoginErrTimes - count})
+		}
+	} else {
+		return nil, xerror.NewErrorWithMapAndXError(constant.ErrUnauthorizedAuthNotExist, nil)
+	}
+
+	token, err := utils.GenerateToken(user)
+	if err != nil {
+		logrus.Errorf("app.GenerateToken err: %v", err)
+		return nil, xerror.NewErrorWithMapAndXError(constant.ErrUnauthorizedTokenGenerate, nil)
+	}
+
+	return &dto.LoginResp{Token: token}, nil
+
 }

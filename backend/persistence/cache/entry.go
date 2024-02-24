@@ -13,13 +13,15 @@ package cache
 import "nunu/backend/constant"
 
 var (
-	_imgCaptchaKey   string
-	_mailCaptchaKey  string
-	_phoneCaptchaKey string
+	_imgCaptchaKey            string
+	_mailCaptchaKey           string
+	_phoneCaptchaKey          string
+	_usernameLoginErrCountKey string
 )
 
 func init() {
 	_imgCaptchaKey = constant.ImgCaptchaKey
 	_mailCaptchaKey = constant.MailCaptchaKey
 	_phoneCaptchaKey = constant.PhoneCaptchaKey
+	_usernameLoginErrCountKey = constant.UsernameLoginErrCountKey
 }

@@ -24,6 +24,6 @@ func (p *PubRouter) InitPubRouter(Router *gin.RouterGroup, pubApi *v1.PubApi) {
 		pubRouter.POST("/auth/register", pubApi.Register)
 		pubRouter.GET("/captcha", pubApi.GetCaptcha)
 		pubRouter.POST("/captcha/mail", pubApi.SendCaptchaWithMailReq)
-
+		pubRouter.POST("/auth/login/username", pubApi.LoginWithUserName)
 	}
 }

@@ -69,6 +69,7 @@ func (r *RedisCacheRepo) DelImgCaptcha(id string) error {
 }
 
 func (r *RedisCacheRepo) GetCountPhoneCaptcha(phone string) (int64, error) {
+	// TODO: 有bug
 	cmd := r.c.Get(_phoneCaptchaKey + phone)
 	err := cmd.Err()
 	if err != nil {
@@ -79,28 +80,41 @@ func (r *RedisCacheRepo) GetCountPhoneCaptcha(phone string) (int64, error) {
 }
 
 func (r *RedisCacheRepo) IncrCountPhoneCaptcha(phone string) (err error) {
+	// TODO: 有bug
 	if err = r.c.Incr(_phoneCaptchaKey + phone).Err(); err == nil {
 		currentTime := time.Now()
 		endTime := time.Date(currentTime.Year(), currentTime.Month(), currentTime.Day(),
 			23, 59, 59, 0, currentTime.Location())
-		err = r.c.Expire(_phoneCaptchaKey+phone, endTime.Sub(currentTime)/time.Second).Err()
+		err = r.c.Expire(_phoneCaptchaKey+phone, endTime.Sub(currentTime)).Err()
 	}
 	return
 }
 
 func (r *RedisCacheRepo) GetCountLoginErr(id uint64) (int64, error) {
-	//TODO implement me
-	panic("implement me")
+	cmd := r.c.Get(_usernameLoginErrCountKey + strconv.Itoa(int(id)))
+	if cmd.Err() == nil {
+		return cmd.Int64()
+	} else {
+		currentTime := time.Now()
+		endTime := time.Date(currentTime.Year(), currentTime.Month(), currentTime.Day(),
+			23, 59, 59, 0, currentTime.Location())
+		err := r.c.Set(_usernameLoginErrCountKey+strconv.Itoa(int(id)), 0, endTime.Sub(currentTime)).Err()
+		return 0, err
+	}
 }
 
 func (r *RedisCacheRepo) DelCountLoginErr(id uint64) error {
-	//TODO implement me
-	panic("implement me")
+	return r.c.Del(_usernameLoginErrCountKey + strconv.Itoa(int(id))).Err()
 }
 
-func (r *RedisCacheRepo) IncrCountLoginErr(id uint64) error {
-	//TODO implement me
-	panic("implement me")
+func (r *RedisCacheRepo) IncrCountLoginErr(id uint64) (err error) {
+	if err = r.c.Incr(_usernameLoginErrCountKey + strconv.Itoa(int(id))).Err(); err == nil {
+		currentTime := time.Now()
+		endTime := time.Date(currentTime.Year(), currentTime.Month(), currentTime.Day(),
+			23, 59, 59, 0, currentTime.Location())
+		err = r.c.Expire(_usernameLoginErrCountKey+strconv.Itoa(int(id)), endTime.Sub(currentTime)).Err()
+	}
+	return
 }
 
 func (r *RedisCacheRepo) GetCountWhisper(uid uint64) (uint64, error) {

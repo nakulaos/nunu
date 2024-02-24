@@ -27,7 +27,7 @@ type SendCaptchaWithMailReq struct {
 	ImgCaptchaID string `json:"img_captcha_id" form:"img_captcha_id" binding:"required"`
 }
 
-type LoginReq struct {
+type LoginReqWithUserName struct {
 	Username string `json:"username" form:"username" binding:"required"`
 	Password string `json:"password" form:"password" binding:"required"`
 }

@@ -14,6 +14,7 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"github.com/gofrs/uuid/v5"
+	"strings"
 )
 
 // EncryptPasswordAndSalt 密码加密&生成salt
@@ -30,4 +31,8 @@ func EncodeMD5(value string) string {
 	m.Write([]byte(value))
 
 	return hex.EncodeToString(m.Sum(nil))
+}
+
+func ValidPassword(dbPassword, password, salt string) bool {
+	return strings.Compare(dbPassword, EncodeMD5(EncodeMD5(password)+salt)) == 0
 }

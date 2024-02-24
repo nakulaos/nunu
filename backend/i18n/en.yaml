@@ -13,6 +13,11 @@ ErrErrorMailCaptcha: "The email verification code is wrong, please re-enter it."
 ErrEmailVerificationCodeExpired: "Email verification code has expired, please resend it"
 ErrMaxMailCaptchaUseTimes: "The email verification code has reached the maximum number of times it can be used, please resend it"
 ErrUserRegisterFailed: "User creation failed, please try again later"
+ErrUnauthorizedAuthNotExist: "User name does not exist, please register first"
+ErrTooManyLoginError: Login failed too many times, please try again later
+ErrUserHasBeenBanned: User has been banned
+ErrUnauthorizedAuthFailed: Incorrect account number or password, number of logins remaining in the day is  {{ .count  }}
+ErrUnauthorizedTokenGenerate: Authentication failure, Token generation failure
 ErrValidation:
   WrongUserFormat: The username is empty or in the wrong format, it should be more than 3 digits and less than 12 digits, and can only contain numbers and letters.
   WrongPasswordFormat: Empty or incorrectly formatted password, should be greater than 8 and less than 18 digits and contain at least numbers and upper and lower case letters and special character

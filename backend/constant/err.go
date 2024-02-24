@@ -20,8 +20,8 @@ var (
 	ErrNotFound                 = xerror.NewError(10003, "ErrNotFound")
 	ErrUnauthorizedAuthNotExist = xerror.NewError(10004, "ErrUnauthorizedAuthNotExist")
 	// ErrUnauthorizedAuthFailed 账号密码错误
-	ErrUnauthorizedAuthFailed = xerror.NewError(10005, "ErrUnauthorizedAuthFailed")
-
+	ErrUnauthorizedAuthFailed       = xerror.NewError(10005, "ErrUnauthorizedAuthFailed")
+	ErrUnauthorizedTokenGenerate    = xerror.NewError(10006, "UnauthorizedTokenGenerate")
 	ErrUsernameHasExisted           = xerror.NewError(20001, "ErrUsernameHasExisted")
 	ErrErrorCaptchaPassword         = xerror.NewError(20002, "ErrErrorCaptchaPassword")
 	ErrTooManyPhoneCaptchaSend      = xerror.NewError(20003, "ErrTooManyPhoneCaptchaSend")
@@ -34,5 +34,7 @@ var (
 	ErrMaxPhoneCaptchaUseTimes      = xerror.NewError(20010, "ErrMaxPhoneCaptchaUseTimes")
 	ErrMaxMailCaptchaUseTimes       = xerror.NewError(20011, "ErrMaxMailCaptchaUseTimes")
 	ErrUserRegisterFailed           = xerror.NewError(20012, "ErrUserRegisterFailed")
+	ErrTooManyLoginError            = xerror.NewError(20013, "ErrTooManyLoginError")
+	ErrUserHasBeenBanned            = xerror.NewError(20014, "ErrUserHasBeenBanned")
 	ErrDisallowUserRegister         = xerror.NewError(20023, "ErrDisallowUserRegister")
 )

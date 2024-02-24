@@ -52,6 +52,8 @@ func GetHttpStatusCode(e xerror.Error) int {
 	case constant.ErrUnauthorizedAuthNotExist.GetErrCode():
 		fallthrough
 	case constant.ErrUnauthorizedAuthFailed.GetErrCode():
+		fallthrough
+	case constant.ErrUnauthorizedTokenGenerate.GetErrCode():
 		return constant.CodeErrUnAuthorized
 	}
 	return constant.CodeErrInternalServer

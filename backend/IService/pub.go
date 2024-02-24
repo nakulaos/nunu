@@ -20,5 +20,5 @@ type IPubService interface {
 	SendCaptchaWithPhoneReq(req *dto.SendCaptchaWithPhoneReq) xerror.Error
 	GetCaptcha() (*dto.GetCaptchaResp, xerror.Error)
 	Register(req *dto.RegisterReq) (*dto.RegisterResp, xerror.Error)
-	Login(req *dto.LoginReq) (*dto.LoginResp, xerror.Error)
+	LoginWithUsername(req *dto.LoginReqWithUserName) (*dto.LoginResp, xerror.Error)
 }

@@ -49,3 +49,13 @@ func (p *PubApi) GetCaptcha(c *gin.Context) {
 	resp, err := p.Pub.GetCaptcha()
 	base.Render(c, resp, err)
 }
+
+func (p *PubApi) LoginWithUserName(c *gin.Context) {
+	req := new(dto.LoginReqWithUserName)
+	if err := base.Bind(c, req); err != nil {
+		base.Render(c, nil, err)
+		return
+	}
+	resp, err := p.Pub.LoginWithUsername(req)
+	base.Render(c, resp, err)
+}

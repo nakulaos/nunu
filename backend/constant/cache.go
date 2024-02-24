@@ -11,7 +11,8 @@
 package constant
 
 var (
-	ImgCaptchaKey   = "nunu_img_captcha "
-	MailCaptchaKey  = "nunu_mail_captcha "
-	PhoneCaptchaKey = "nunu_phone_captcha "
+	ImgCaptchaKey            = "nunu_img_captcha "
+	MailCaptchaKey           = "nunu_mail_captcha "
+	PhoneCaptchaKey          = "nunu_phone_captcha "
+	UsernameLoginErrCountKey = "nunu_username_login_error_count "
 )
