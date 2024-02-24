@@ -17,15 +17,17 @@ import (
 	"net/http"
 	"nunu/backend/i18n"
 	"nunu/backend/init/conf"
+	"nunu/backend/init/validation"
 	v1 "nunu/backend/router/v1"
 	"nunu/script/wire"
 )
 
 func InitRouter() *gin.Engine {
-	router := gin.New()
+	router := gin.Default()
 	router.HandleMethodNotAllowed = true
-	router.Use(gin.Logger())
-	router.Use(gin.Recovery())
+
+	// 初始化校验器
+	validation.InitValidation(router)
 
 	// 添加全局中间件
 	// 跨域配置
@@ -67,6 +69,7 @@ func InitRouter() *gin.Engine {
 	PrivateGroup := router.Group("/api/v1")
 	{
 		systemRouter.InitAdminRouter(PrivateGroup, wire.CreateAdminApi())
+		systemRouter.InitPubRouter(PrivateGroup, wire.CreatePubApi())
 	}
 
 	return router

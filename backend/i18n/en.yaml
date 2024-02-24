@@ -1,0 +1,25 @@
+Success: “success”
+ErrInvalidParams: "Request parameter error： {{ .detail }} "
+ErrDisallowUserRegister: "This system does not allow user to register at this time! Please contact the administrator or person in charge."
+ErrUsernameHasExisted: Username already exists： {{ .username }}
+ErrInternalServer: There was a system error. Please try again later.
+ErrErrorCaptchaPassword: Graphical CAPTCHA verification failed
+ErrTooManyPhoneCaptchaSend: "The number of mobile phone captcha acquisitions has reached today's maximum number of captcha acquisitions"
+ErrTooManyMailCaptchaSend: "The number of mobile mail captcha acquisitions has reached today's maximum number of captcha acquisitions"
+ErrExistedUserPhone: "Mobile phone number has been tied up: {{ .phone }} "
+ErrExistedUserMail: "Mail has been tied up: {{ .mail }}"
+ErrErrorPhoneCaptcha: "The mobile phone verification code is wrong, please re-enter it."
+ErrErrorMailCaptcha: "The email verification code is wrong, please re-enter it."
+ErrEmailVerificationCodeExpired: "Email verification code has expired, please resend it"
+ErrMaxMailCaptchaUseTimes: "The email verification code has reached the maximum number of times it can be used, please resend it"
+ErrUserRegisterFailed: "User creation failed, please try again later"
+ErrUnauthorizedAuthNotExist: "User name does not exist, please register first"
+ErrTooManyLoginError: Login failed too many times, please try again later
+ErrUserHasBeenBanned: User has been banned
+ErrUnauthorizedAuthFailed: Incorrect account number or password, number of logins remaining in the day is  {{ .count  }}
+ErrUnauthorizedTokenGenerate: Authentication failure, Token generation failure
+ErrValidation:
+  WrongUserFormat: The username is empty or in the wrong format, it should be more than 3 digits and less than 12 digits, and can only contain numbers and letters.
+  WrongPasswordFormat: Empty or incorrectly formatted password, should be greater than 8 and less than 18 digits and contain at least numbers and upper and lower case letters and special character
+  IncorrectMail: Empty mailbox or wrong mailbox format
+  LackOfPhone: Phone is empty

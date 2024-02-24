@@ -9,3 +9,11 @@
  */
 
 package jinzhu
+
+import "nunu/backend/init/conf"
+
+func init() {
+	// 顺便初始化表名
+	sysConfig := conf.GetConfig()
+	InitTableName(sysConfig.DatabaseConf.TablePrefix)
+}

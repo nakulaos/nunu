@@ -1,8 +1,9 @@
+// @ts-nocheck
 // 导入需要使用的类型和库
 import type { Plugin } from 'vite'
 import type { AddressInfo } from 'net'
 import { spawn } from 'child_process'
-import fs from 'fs'
+import  fs from 'fs'
 
 
 // 导出Vite插件函数
@@ -33,7 +34,8 @@ export const viteElectronDev = (): Plugin => {
                 const addressInfo = server?.httpServer?.address() as AddressInfo
                 const IP = `http://localhost:${addressInfo.port}`
                 // 启动Electron进程
-                let electronProcess = spawn(require('electron'), ['dist/background.js', IP])
+                // @ts-ignore
+                let electronProcess = spawn(require('electron') , ['dist/background.js', IP])
 
                 // 监听主进程代码的更改
                 fs.watchFile('src/background.ts', () => {
@@ -41,11 +43,12 @@ export const viteElectronDev = (): Plugin => {
                     electronProcess.kill()
                     // 重新编译主进程代码并重新启动Electron进程
                     initElectron()
+                    // @ts-ignore
                     electronProcess = spawn(require('electron'), ['dist/background.js', IP])
                 })
 
                 // 监听Electron进程的stdout输出
-                electronProcess.stdout?.on('data', (data) => {
+                electronProcess?.stdout?.on('data', (data) => {
                     console.log(`日志: ${data}`);
                 });
             })

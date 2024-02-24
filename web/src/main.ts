@@ -1,10 +1,12 @@
-import './assets/main.css'
+import '@/style/style.css'
+import '@/style/main.scss'
+
+
 
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
 
 import App from './App.vue'
-import router from './router'
+import router from '@/router/index'
 import i18n from '@/lang/index'
 import pinia from "@/stores";
 import ElementPlus from 'element-plus';
