@@ -13,6 +13,7 @@ package service
 import (
 	"nunu/backend/IService"
 	"nunu/backend/dto"
+	"nunu/backend/pkg/xerror"
 	"nunu/backend/repo"
 )
 
@@ -31,7 +32,7 @@ func (a *AdminService) ChangeUserStatus(req *dto.ChangeUserStatusReq) {
 	panic("implement me")
 }
 
-func (a *AdminService) SiteInfo(req *dto.SiteInfoReq) (resp *dto.SiteInfoResp, err error) {
+func (a *AdminService) SiteInfo(req *dto.SiteInfoReq) (resp *dto.SiteInfoResp, err xerror.Error) {
 	// TODO implement me
 	panic("implement me")
 }

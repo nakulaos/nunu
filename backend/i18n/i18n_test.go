@@ -34,7 +34,7 @@ func TestGinI18nLocalize(t *testing.T) {
 		city := "香港"
 		maps := make(map[string]interface{})
 		maps["city"] = city
-		s, _ := ginI18n.GetMessage(c, &i18n.LocalizeConfig{
+		s, _ := ginI18n.GetMessage(&i18n.LocalizeConfig{
 			MessageID:    "CityName",
 			TemplateData: maps,
 		})

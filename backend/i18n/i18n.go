@@ -20,17 +20,17 @@ import (
 	"strings"
 )
 
-//go:embed lang/*
+//go:embed *.yaml
 var fs embed.FS
 
-func GetMsgWithMap(c *gin.Context, key string, maps map[string]interface{}) string {
+func GetMsgWithMap(key string, maps map[string]interface{}) string {
 	content := ""
 	if maps == nil {
-		content = ginI18n.MustGetMessage(c, &i18n.LocalizeConfig{
+		content = ginI18n.MustGetMessage(&i18n.LocalizeConfig{
 			MessageID: key,
 		})
 	} else {
-		content = ginI18n.MustGetMessage(c, &i18n.LocalizeConfig{
+		content = ginI18n.MustGetMessage(&i18n.LocalizeConfig{
 			MessageID:    key,
 			TemplateData: maps,
 		})
@@ -44,14 +44,14 @@ func GetMsgWithMap(c *gin.Context, key string, maps map[string]interface{}) stri
 	}
 }
 
-func GetErrMsg(c *gin.Context, key string, maps map[string]interface{}) string {
+func GetErrMsg(key string, maps map[string]interface{}) string {
 	content := ""
 	if maps == nil {
-		content = ginI18n.MustGetMessage(c, &i18n.LocalizeConfig{
+		content = ginI18n.MustGetMessage(&i18n.LocalizeConfig{
 			MessageID: key,
 		})
 	} else {
-		content = ginI18n.MustGetMessage(c, &i18n.LocalizeConfig{
+		content = ginI18n.MustGetMessage(&i18n.LocalizeConfig{
 			MessageID:    key,
 			TemplateData: maps,
 		})
@@ -59,8 +59,8 @@ func GetErrMsg(c *gin.Context, key string, maps map[string]interface{}) string {
 	return content
 }
 
-func GetMsgByKey(c *gin.Context, key string) string {
-	content := ginI18n.MustGetMessage(c, &i18n.LocalizeConfig{
+func GetMsgByKey(key string) string {
+	content := ginI18n.MustGetMessage(&i18n.LocalizeConfig{
 		MessageID: key,
 	})
 	return content
@@ -70,8 +70,8 @@ func GetMsgByKey(c *gin.Context, key string) string {
 func GinI18nLocalize() gin.HandlerFunc {
 	return ginI18n.Localize(
 		ginI18n.WithBundle(&ginI18n.BundleCfg{
-			RootPath:         "./lang",
-			AcceptLanguage:   []language.Tag{language.Chinese, language.English, language.TraditionalChinese, language.German, language.French},
+			RootPath:         ".",
+			AcceptLanguage:   []language.Tag{language.Chinese, language.English, language.TraditionalChinese, language.German, language.French}, //nolint:lll
 			DefaultLanguage:  language.Chinese,
 			FormatBundleFile: "yaml",
 			UnmarshalFunc:    yaml.Unmarshal,

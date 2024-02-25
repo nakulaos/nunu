@@ -32,6 +32,7 @@ var (
 
 func initGormDB() {
 	sysConfig := conf.GetConfig()
+
 	newLogger := logger.New(
 		logrus.StandardLogger(),
 		logger.Config{
