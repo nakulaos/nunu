@@ -43,22 +43,26 @@ const globalStore = GlobalStore();
 
 .app-wrapper{
   //background-color: blue;
-  margin: 5px auto;
+
   .main-wrapper{
     //background-color: antiquewhite;
     display: flex;
     height: 90vh;
     overflow: auto;
     justify-content: center;
+    padding: 10px 0;
 
     .app-container{
       // 最大宽度
       max-width: var(--content-main);
       //background-color: blueviolet;
       width: 100%;
-    }
 
+    }
   }
+  .main-wrapper::-webkit-scrollbar {
+     display: none;
+   }
   .app-footer{
     height: 10vh;
   }
