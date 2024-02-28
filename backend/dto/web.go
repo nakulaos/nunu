@@ -16,6 +16,14 @@ type BaseInfo struct {
 	User *model.User
 }
 
+func (b *BaseInfo) SetUser(user *model.User) {
+	b.User = user
+}
+
 type SimpleInfo struct {
 	Uid uint64
+}
+
+func (s *SimpleInfo) SetUserUID(uid uint64) {
+	s.Uid = uid
 }

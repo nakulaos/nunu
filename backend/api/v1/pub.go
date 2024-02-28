@@ -21,7 +21,7 @@ type PubApi struct {
 	Pub IService.IPubService
 }
 
-func NewPubAdmin(pub IService.IPubService) *PubApi {
+func NewPubApi(pub IService.IPubService) *PubApi {
 	return &PubApi{Pub: pub}
 }
 
