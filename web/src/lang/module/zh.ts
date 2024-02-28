@@ -1,6 +1,10 @@
 const  message = {
     commons:{
         city: "城市"
+    },
+    menu:{
+        home:"广场",
+        topic:"话题",
     }
 };
 

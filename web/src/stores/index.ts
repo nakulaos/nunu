@@ -11,6 +11,12 @@ export const GlobalStore = defineStore({
             desktopModelShow: document.body.clientWidth > 821,
             language:"",
             isLogin:false,
+            userInfo:{
+                id:0,
+                username:"",
+                nickname:"",
+                is_admin:false,
+            }
         }),
         getters: {},
         actions: {

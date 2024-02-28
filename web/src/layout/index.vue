@@ -38,14 +38,14 @@ const globalStore = GlobalStore();
 
 <style lang="scss">
 :root{
-  --content-main:750px;
+  --content-main:625px;
 }
 
 .app-wrapper{
-  background-color: blue;
-  margin: 0 auto;
+  //background-color: blue;
+  margin: 5px auto;
   .main-wrapper{
-    background-color: antiquewhite;
+    //background-color: antiquewhite;
     display: flex;
     height: 90vh;
     overflow: auto;
@@ -54,7 +54,7 @@ const globalStore = GlobalStore();
     .app-container{
       // 最大宽度
       max-width: var(--content-main);
-      background-color: blueviolet;
+      //background-color: blueviolet;
       width: 100%;
     }
 
