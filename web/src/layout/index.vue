@@ -1,5 +1,6 @@
 <template>
 <div class="app-wrapper">
+  <div class="header"></div>
   <div class="main-wrapper">
     <!--      侧边栏-->
     <div class="app-sidebar" v-if="globalStore.$state.desktopModelShow">
@@ -43,11 +44,16 @@ const globalStore = GlobalStore();
 
 .app-wrapper{
   //background-color: blue;
+  .header{
+    height: 1vh;
+    width: 100%;
+    -webkit-app-region: drag;
+  }
 
   .main-wrapper{
     //background-color: antiquewhite;
     display: flex;
-    height: 90vh;
+    height: 89vh;
     overflow: auto;
     justify-content: center;
     padding: 10px 0;
@@ -66,10 +72,11 @@ const globalStore = GlobalStore();
   .app-footer{
     height: 10vh;
   }
-
-
 }
 
+.app-wrapper::-webkit-scrollbar {
+  display: none;
+}
 
 
 
