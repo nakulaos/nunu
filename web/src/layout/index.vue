@@ -20,6 +20,7 @@
   <div class="app-footer">
     <app-footer></app-footer>
   </div>
+  <auth-card></auth-card>
 
 
 
@@ -32,6 +33,7 @@ import Sidebar from "@/layout/components/sidebar.vue";
 import AppMain from "@/layout/components/app-main.vue";
 import Rightbar from "@/layout/components/rightbar.vue";
 import AppFooter from "@/layout/components/app-footer.vue";
+import AuthCard from "@/components/auth-card/auth-card.vue";
 
 const globalStore = GlobalStore();
 </script>
@@ -53,7 +55,7 @@ const globalStore = GlobalStore();
   .main-wrapper{
     //background-color: antiquewhite;
     display: flex;
-    height: 89vh;
+    height: 94vh;
     overflow: auto;
     justify-content: center;
     padding: 10px 0;
@@ -70,7 +72,7 @@ const globalStore = GlobalStore();
      display: none;
    }
   .app-footer{
-    height: 10vh;
+    height: 5vh;
   }
 }
 

@@ -11,18 +11,40 @@ export const GlobalStore = defineStore({
             desktopModelShow: document.body.clientWidth > 821,
             language:"",
             isLogin:false,
+            authModalShow: false,
+            authModalTab:'signin',
             userInfo:{
                 id:0,
                 username:"",
                 nickname:"",
                 is_admin:false,
+                avatar:"",
+                token:"",
+            },
+            profile:{
+                useFriendship:true,
+                enableWallet: false,
+                allowUserRegister: true,
             }
         }),
         getters: {},
         actions: {
             setLoginStatus(Login:boolean){
                 this.isLogin = Login
+            },
+            triggerAuth(status:boolean){
+                this.authModalShow = status
+            },
+            triggerAuthKey(key:string){
+                this.authModalTab = key
+            },
+            setToken(token:string){
+                this.userInfo.token = token
             }
+
+
+
+
         },
         persist: piniaPersistConfig('GlobalState'),
 

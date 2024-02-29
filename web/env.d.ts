@@ -1,7 +1,9 @@
 /// <reference types="vite/client" />
+/// <reference types="vue/ref-macros" />
+/// <reference types="naive-ui/volar" />
+/// <reference types="@types/qrcode" />
 
-declare module "*.vue" {
-    import { DefineComponent } from "vue"
-    const component: DefineComponent<{}, {}, any>
-    export default component
+
+interface ImportMetaEnv {
+    readonly VITE_HOST:string
 }

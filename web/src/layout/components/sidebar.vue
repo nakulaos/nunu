@@ -9,11 +9,25 @@
   </div>
 
   <div class="user-wrap" v-if="globalStore.$state.userInfo.id>0">
+<!--    登录后的图标-->
+    <el-avatar :src="globalStore.userInfo.avatar"></el-avatar>
 
   </div>
-
-
-
+  <div class="user-wrap" v-else>
+    <div v-if="!globalStore.$state.profile.allowUserRegister" class="login-only-wrap">
+      <el-button text rount type="success" @click="triggerAuthWithButton('signin')" >
+        {{ $t('other.login') }}
+      </el-button>
+    </div>
+    <div v-else>
+      <el-button text round type="success" @click="triggerAuthWithButton('signin')" >
+        {{ $t('other.login') }}
+      </el-button>
+      <el-button text round type="primary" @click="triggerAuthWithButton('signup')">
+        {{ $t('other.register') }}
+      </el-button>
+    </div>
+  </div>
 
 
 
@@ -41,8 +55,47 @@ const menuList = computed(()=>{
       icon: "ChatRound",
       titleKey:"topic",
       path:"/topic"
+    },
+    {
+      icon: "UserFilled",
+      titleKey: "profile",
+      path: "/profile",
+    },
+    {
+      icon:"Notification",
+      titleKey: "notification",
+      path: "/notification"
+    },
+    {
+      icon:"StarFilled",
+      titleKey:"collection",
+      path: "/collection",
     }
     ]
+
+    if(globalStore.$state.profile.useFriendship){
+      list.push({
+        icon:"Connection",
+        titleKey: "contacts",
+        path: "/contacts",
+
+      })
+    }
+
+    if(globalStore.$state.profile.enableWallet){
+      list.push({
+        icon:"Money",
+        titleKey: "wallet",
+        path: "/wallet",
+      })
+    }
+
+    list.push(    {
+      icon: "Setting",
+      titleKey:"setting",
+      path: "/setting",
+    })
+
   return globalStore.$state.userInfo.id>0?list:
       [
         {
@@ -60,8 +113,14 @@ const menuList = computed(()=>{
 
 const goHome = ()=>{
   console.log("img")
-
 }
+
+
+const triggerAuthWithButton = (key)=>{
+  globalStore.triggerAuth(true)
+  globalStore.triggerAuthKey(key)
+}
+
 </script>
 <style scoped lang="scss">
 .sidebar-wrap::-webkit-scrollbar{
@@ -75,16 +134,17 @@ const goHome = ()=>{
   height: 100%;
   position: fixed;
   right: calc(50% + var(--content-main) / 2 + 10px);
-  padding: 8px 5px;
+  padding: 0 5px;
   box-sizing: border-box;
   overflow: auto;
   max-height: 90vh;
 
 
   .logo-wrap{
-    margin:5px 0 0 0 ;
+    margin:0 0 0 0 ;
     position: relative;
     right: 8px;
+
 
     .logo-img{
       //margin-left: 24px;
@@ -97,7 +157,18 @@ const goHome = ()=>{
 
 
   }
+
+  .user-wrap{
+
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+
+
+  }
 }
+
+
 
 
 
