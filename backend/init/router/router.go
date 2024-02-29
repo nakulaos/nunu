@@ -70,6 +70,7 @@ func InitRouter() *gin.Engine {
 	{
 		systemRouter.InitAdminRouter(PrivateGroup, wire.CreateAdminApi())
 		systemRouter.InitPubRouter(PrivateGroup, wire.CreatePubApi())
+		systemRouter.InitUserRouter(PrivateGroup, wire.CreateUserApi())
 	}
 
 	return router
