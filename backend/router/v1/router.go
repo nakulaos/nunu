@@ -13,4 +13,5 @@ package v1
 type RouterGroup struct {
 	AdminRouter
 	PubRouter
+	UserRouter
 }

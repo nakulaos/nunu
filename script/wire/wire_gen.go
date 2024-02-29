@@ -36,11 +36,17 @@ func CreatePubApi() *v1.PubApi {
 	randRand := rand.NewRand()
 	iMailVerifyServiceRepo := mail.GetMailVerify()
 	iSecurityServiceRepo := jinzhu.NewSecurityServiceRepo(db, randRand, iMailVerifyServiceRepo)
-	clusterClient := redis.GetRedisClient()
-	iRedisCacheRepo := cache.NewRedisCacheRepo(clusterClient)
+	client := redis.GetRedisClient()
+	iRedisCacheRepo := cache.NewRedisCacheRepo(client)
 	iPubService := service.NewPubService(iUserManageRepo, iSecurityServiceRepo, iRedisCacheRepo)
-	pubApi := v1.NewPubAdmin(iPubService)
+	pubApi := v1.NewPubApi(iPubService)
 	return pubApi
+}
+
+func CreateUserApi() *v1.UserApi {
+	iUserService := service.NewUserService()
+	userApi := v1.NewUserApi(iUserService)
+	return userApi
 }
 
 // wire_injectors.go:

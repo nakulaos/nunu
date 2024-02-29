@@ -4,7 +4,6 @@ import {Layout} from "@/router/constant";
 const homeRouter:RouteRecordRaw = {
     path:"/",
     component:Layout,
-    redirect: '/',
     meta:{
         keepAlive:true,
         title:'menu-home',

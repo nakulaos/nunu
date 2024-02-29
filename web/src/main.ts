@@ -1,5 +1,5 @@
 import '@/style/style.css'
-import '@/style/main.scss'
+
 
 
 
@@ -10,6 +10,7 @@ import router from '@/router/index'
 import i18n from '@/lang/index'
 import pinia from "@/stores";
 import ElementPlus from 'element-plus';
+import 'element-plus/dist/index.css'
 import Fit2CloudPlus from 'fit2cloud-ui-plus';
 import * as Icons from '@element-plus/icons-vue';
 

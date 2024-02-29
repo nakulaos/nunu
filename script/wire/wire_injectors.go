@@ -47,3 +47,9 @@ func CreatePubApi() *v1.PubApi {
 		allProviders)
 	return new(v1.PubApi)
 }
+
+func CreateUserApi() *v1.UserApi {
+	wire.Build(
+		allProviders)
+	return new(v1.UserApi)
+}

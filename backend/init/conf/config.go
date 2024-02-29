@@ -63,6 +63,7 @@ func initConf() {
 	}
 
 	_config.RedisConf.ConnWriteTimeout *= time.Second
+	_config.JwtConf.Expire *= time.Second
 }
 
 func GetConfig() *config.Config {

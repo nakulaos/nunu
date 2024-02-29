@@ -1,5 +1,6 @@
 <template>
 <div class="app-wrapper">
+  <div class="header"></div>
   <div class="main-wrapper">
     <!--      侧边栏-->
     <div class="app-sidebar" v-if="globalStore.$state.desktopModelShow">
@@ -19,6 +20,7 @@
   <div class="app-footer">
     <app-footer></app-footer>
   </div>
+  <auth-card></auth-card>
 
 
 
@@ -31,6 +33,7 @@ import Sidebar from "@/layout/components/sidebar.vue";
 import AppMain from "@/layout/components/app-main.vue";
 import Rightbar from "@/layout/components/rightbar.vue";
 import AppFooter from "@/layout/components/app-footer.vue";
+import AuthCard from "@/components/auth-card/auth-card.vue";
 
 const globalStore = GlobalStore();
 </script>
@@ -38,34 +41,44 @@ const globalStore = GlobalStore();
 
 <style lang="scss">
 :root{
-  --content-main:750px;
+  --content-main:625px;
 }
 
 .app-wrapper{
-  background-color: blue;
-  margin: 0 auto;
+  //background-color: blue;
+  .header{
+    height: 1vh;
+    width: 100%;
+    -webkit-app-region: drag;
+  }
+
   .main-wrapper{
-    background-color: antiquewhite;
+    //background-color: antiquewhite;
     display: flex;
-    height: 90vh;
+    height: 94vh;
     overflow: auto;
     justify-content: center;
+    padding: 10px 0;
 
     .app-container{
       // 最大宽度
       max-width: var(--content-main);
-      background-color: blueviolet;
+      //background-color: blueviolet;
       width: 100%;
+
     }
-
   }
+  .main-wrapper::-webkit-scrollbar {
+     display: none;
+   }
   .app-footer{
-    height: 10vh;
+    height: 5vh;
   }
-
-
 }
 
+.app-wrapper::-webkit-scrollbar {
+  display: none;
+}
 
 
 

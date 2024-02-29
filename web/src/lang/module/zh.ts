@@ -1,6 +1,42 @@
 const  message = {
     commons:{
         city: "城市"
+    },
+    menu:{
+        home:"广场",
+        topic:"话题",
+        profile:"主页",
+        notification:"消息",
+        collection:"收藏",
+        setting:"设置",
+        contacts:"好友",
+    },
+    other:{
+        login: '登录',
+        register: '注册',
+        cancel: '取消',
+
+
+    },
+    variable:{
+        username: '用户名',
+        password: '密码',
+    },
+    validate:{
+        loginRule:{
+            username:{
+                required: "请输入用户名"
+            },
+            password:{
+                required:"请输入密码"
+            }
+        }
+    },
+    error:{
+        require: "请求失败"
+    },
+    event:{
+        loginSuccess: "登录成功"
     }
 };
 
